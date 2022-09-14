@@ -1,0 +1,41 @@
+<!-- ================================================
+			TABLA PARA TABLAS AVANZADAS
+================================================= -->
+
+<table>
+	<tr>
+		<th></th>
+		<th>Lunes</th>
+		<th>Martes</th>
+		<th>Miércoles</th>
+		<th>Miércoles</th>
+	</tr>
+	<tr>
+		<th>9:00</th>
+		<td>Matemáticas</td>
+		<td>Química</td>
+		<td>Gimnasia</td>
+		<td>Lengua</td>
+	</tr>
+	<tr>
+		<th>10:00</th>
+		<td>Lengua</td>
+		<td>Química</td>
+		<td>Gimnasia</td>
+		<td>Filosofía</td>
+	</tr>
+	<tr>
+		<th>11:00</th>
+		<td>Historia</td>
+		<td>Filosofía</td>
+		<td>Gimnasia</td>
+		<td>Matemáticas</td>
+	</tr>
+	<tr>
+		<th>12:00</th>
+		<td>Física</td>
+		<td>Matemáticas</td>
+		<td>Dibujo Técnico</td>
+		<td>Biología</td>
+	</tr>
+</table>

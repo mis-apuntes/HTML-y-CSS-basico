@@ -1,0 +1,36 @@
+#caja1 {
+	height: 600px;
+	width: 600px;
+	
+	padding: 20px 5px 100px 30px;
+	
+	border: 3px dotted green;
+	border-top-width: 10px;
+	border-right-color: orange;
+	border-left-style: double;
+	border-bottom: blue 15px dashed; 
+	
+	background-image: url("../img/fondomadera.jpg");
+}
+
+p {
+	background-color: pink;
+	height: 400px;
+	width: 400px;
+	
+	margin-top: 100px;
+	margin-bottom: 10px;
+	margin-left: 50px;
+	margin-right: 20px;
+	padding: 15px;
+	
+	border-color: red;
+	border-style: double;
+	border-width: 10px;
+
+	color: rgba(56,150,191,1);
+}
+
+.inlineheader {
+	display: inline;
+}

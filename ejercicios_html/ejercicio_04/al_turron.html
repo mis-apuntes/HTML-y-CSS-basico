@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+
+		<title>Hotel La Parada | Reservas</title>
+
+	</head>
+	<body>
+
+		<h1>Bienvenido a la página de reservas del Hotel "La Parada"</h1>
+		
+		<p>Desde esta página puede gestionar con total comodidad su reserva.</p>
+		
+		<table border="1">
+			<tr>
+				<th>Tipo de habitación</th>
+				<th>Nº de personas</th>
+				<th>Precio/noche</th>
+			</tr>
+			<tr>
+				<td>Doble</td>
+				<td>2</td>
+				<td>57 €</td>
+			</tr>
+			<tr>
+				<td>Triple</td>
+				<td>3</td>
+				<td>81 €</td>
+			</tr>
+			<tr>
+				<td>Suite</td>
+				<td>2</td>
+				<td>125 €</td>
+			</tr>
+		</table>
+		
+		<hr>
+		
+		<form>
+			<fieldset>
+				<legend>Hotel La Parada</legend>
+				
+				Nombre: *<input type="text" name="nombre" required="required"> <br>
+				Apellidos: *<input type="text" name="apellido" required="required"> 
+				
+				<br><br>
+				
+				E-mail: *<input type="email" name="email" placeholder="tu@email.com" required="required">
+				
+				<br><br>
+				
+				Contraseña: *<input type="password" name="pass" required="required">
+				
+				<br><br>
+				
+				Fecha de entrada: *<input type="date" name="llegada" required="required"> <br>
+				Fecha de salida: *<input type="date" name="salida" required="required"> 
+				
+				<br><br>
+				
+				Tipo de habitación: <br>
+					<input type="radio" name="habitacion" value="doble" checked="check">Doble 
+					<input type="radio" name="habitacion" value="triple">Triple 
+					<input type="radio" name="habitacion" value="suite">Suite 
+					
+				<br><br>
+				
+				Extras opcionales: <br>
+					<input type="checkbox" name="extras" value="desayuno"> Incluir desayuno (+12€/día) <br>
+					<input type="checkbox" name="extras" value="parking"> Parking subterráneo (+13€/día) 
+					
+				<br><br><br>
+				
+				<p>Comentarios sobre su reserva</p>
+				<textarea name="comentarios" rows="5" cols="60" placeholder="Escriba aquí sus comentarios"></textarea>
+				
+				<br><br>
+				
+				<input type="submit" name="enviar" value="¡Reservar!">
+				<input type="reset" name="limpiar" value="Limpiar formulario">
+				
+			</fieldset>
+		</form>
+
+	</body>
+</html>

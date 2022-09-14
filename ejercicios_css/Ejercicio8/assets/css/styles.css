@@ -1,0 +1,52 @@
+* {
+	font-family: 'Dosis', sans-serif;
+	/* ======= Tipos de familias genericas:
+		serif
+		sans-serif
+		monospace
+		----------
+		cursive
+		fantasy
+	========== */
+}
+
+h1 {
+	font-size: 50px;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+
+h2 {
+	font-size: 28px;
+	font-weight: normal;
+	font-style: italic;
+	/* ======= Estilos más comunes:
+		italic
+		normal
+		oblique
+	========== */
+}
+
+p {
+	font-size: 16px;
+}
+
+.textotransformado {
+	text-transform: uppercase;
+	/* ======= Transformaciones de texto más comunes:
+		uppercase
+		lowercase
+		capitalize
+	========== */
+}
+
+.textodecorado {
+	text-decoration: none;
+	/* ======= Decoraciones de texto:
+		underline
+		overline
+		line-through
+		none
+	========== */
+}
+

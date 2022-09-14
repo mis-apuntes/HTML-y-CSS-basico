@@ -1,0 +1,24 @@
+Etiqueta Meta para utilizar caracteres con tilde:
+
+<meta http-equiv=“Content-Type” content=“text/html” charset=“UTF-8”>
+
+==========================
+
+Al turrón - Texto del artículo:
+
+Descubierta nueva forma de viajar fuera de la Tierra.
+Los investigadores afirman que reducirá a la mitad el tiempo de viaje.
+
+Recientes estudios en las instalaciones de la NASA han revelado la existencia de un nuevo compuesto químico que puede utilizarse como combustible para cohetes con un rendimiento superior al 97%.
+La tetracarbonatodioxodestrina, en adelante TCDOD, es un compuesto obtenido principalmente a partir de la síntesis de varios elementos del eucalipto. Tras 12 años de investigaciones, finalmente se ha conseguido sintetizarlo con una pureza suficiente como para conseguir un combustible estable.
+        
+Aplicaciones en el día a día
+        
+Por el momento, el combustible requiere de depósitos especiales para ser almacenado, debido a su alta presión de almacenaje. Sin embargo, no se descarta una posible adaptación a los medios de transporte habituales, comenzando por el avión.
+        
+El prof. Marshall, principal responsable investigador del TCDOD, asegura que se trata del combustible del futuro dado su bajo coste y alto rendimiento, pero sobre todo porque se trata de un combustible renovable y que apenas genera residuos.
+        
+Esperemos que las investigaciones terminen pronto, ¡El petróleo y el gas natural se acaban!
+        
+Juan Carlos Fernández, Madrid.
+jcf@elperiodicodehoy.com
