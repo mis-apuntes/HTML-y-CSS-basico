@@ -1,12 +1,8 @@
-Etiqueta Meta para utilizar caracteres con tilde:
 
-<meta http-equiv=“Content-Type” content=“text/html” charset=“UTF-8”>
-
-==========================
-
-Al turrón - Texto del artículo:
+=================== Texto del artículo =========================
 
 Descubierta nueva forma de viajar fuera de la Tierra.
+
 Los investigadores afirman que reducirá a la mitad el tiempo de viaje.
 
 Recientes estudios en las instalaciones de la NASA han revelado la existencia de un nuevo compuesto químico que puede utilizarse como combustible para cohetes con un rendimiento superior al 97%.
@@ -22,3 +18,8 @@ Esperemos que las investigaciones terminen pronto, ¡El petróleo y el gas natur
         
 Juan Carlos Fernández, Madrid.
 jcf@elperiodicodehoy.com
+
+
+======== abreviaciones
+NASA: Agencia Nacional de la Aeronáutica y del Espacio
+

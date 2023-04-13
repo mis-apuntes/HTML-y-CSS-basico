@@ -8,14 +8,18 @@ Las hojas de estilo en cascada o CSS, son un simple mecanismo que describe cómo
 
 ## Conceptos generales
 
-### Selectores
-Es a través de estos selectores que se definen los estilos.
-Los selectores tiene propiedades y las propiedades pueden tener diferentes valores
+### Sintaxis
+Las hojas de estilo están formadas por reglas, cada regla
+está formada por un selector. El selector contiene una o varias declaraciones. Cada declaración está conformado por un nombre de pripiedad y su valor (es).
 
+    /* <------- regla -------->  */
     <selector> {
+    	/*bloque de declaraciones*/
         <propA>: <valorX>;
-        <propB>: <valorY> <valorZ>;
+        <propB>: <valorY> <valorZ> ... ;
     }
+    
+    /* Comentario multilinea */
 
 ### Incluir CSS a una página
 
@@ -75,9 +79,9 @@ body { color: red; }
 + **universal**: selecciona todos los tags 
   
     ```
-    * { font-family: sans-serif }
+    * { box-sizing: border-box; }
     ```
-+ **tipo**: selecciona tags especificados
++ **etiqueta**: selecciona tags especificados
   
     ```
     h1 { ... }
@@ -101,7 +105,7 @@ body { color: red; }
     ```
 + **descendientes**: selecciona tags hijos específicos. Por ejemplo, consideremos la sig. estructura html: 
   
-    ```
+    ```html
     <ul class="menu">
         <li><a> ... </a></li>
         <li>
@@ -115,12 +119,12 @@ body { color: red; }
     ```
     + **descendientes indirectos**: selecciona hijos, nietos y bisnietos
       
-        ```
+        ```css
         .menu li a { ... }
         ```
     + **descendientes directos**: selecciona los hijos directo.
       
-        ```
+        ```css
         .menu > li  { ... } 
         ```
 ### Especificidad
@@ -162,13 +166,13 @@ p span { background-color: red;}
 ¿que fondo se aplica?
 ```
 
-## Margenes y colores
+## Model box
 
 ### Modelo de cajas
-Siguiendo la lógica de la estructura HTML (padres, hijos, nietos, etc) cada uno de ellos. se los puede entender como cajas que van dentro de otras caja y asi sucesivamente.
+Siguiendo la lógica de la estructura HTML (padres, hijos, nietos, etc) cada uno de ellos. se los puede entender como cajas que van dentro de otras caja y así sucesivamente.
 
 ```css
-/*
+/* html
 <div> <p> .... </p> </div>
 */
 
@@ -187,21 +191,90 @@ p {
 
 ![modelo de cajas](images/modelo_de_cajas.png)
 
+Cada caja contiene las siguientes propiedades: margenes, bordes, paddings y su contenido.
+
+![image-20230329155919884](images/parts_of_box.png)
+
+> El margin y padding son transparentes
+
+### Ancho y alto
+
+Por defecto, `width` y `height` definen el ancho y alto del **content**.
+
+```css
+p {
+    width: 350px;
+    height: 500px;
+}
+```
+
 ### Márgenes y relleno
 
 margin y padding
 
 ### Bordes
 
+Para aplicar bordes se deben considerar necesariamente tres propiedades: **grosor, estilo y color de borde**.
+
+```css
+.bordes {
+    border-width: 2px;
+    border-style: solid;
+    border-color: red;
+}
 ```
-/* En una sola línea */
-border: 3px dotted green;
 
-/* Por separado */
-border-color: blue;
-border-style: double;
-border-width: 2px;
+> Los **valores de estilos** de bordes son: `solid`, `dashed`, `dotted`, `double`, `none` entre los más usados.
 
+<div style="border-width: 2px;
+    border-style: solid;
+    border-color: red;">Ejemplo</div>
+
+Estas propiedades pueden recibir hasta 4 valores, dependiendo cuantos valores se definan se aplicarán los bordes (en sentido horario).
+
+> Es el mismo principio de márgenes (defin. varios valores, en sentido horario).
+
+```css
+.bordes-3 {
+	border-color: orange; 
+    /*naranja a los 4 lados*/
+    border-style: dashed solid; 
+    /* dashed arriba y abajo*/
+    border-width: 3px 5px 2px 4px; 
+    /* todos los lados difer.*/
+}
+```
+
+<div style="border-color: orange; border-style: dashed solid; border-width: 3px 5px 1px 4px">Ejemplo</div>
+
+---
+
+#### **Shorthands**
+
+Es más práctico definir el borde,usando el *shorthand* `border`.
+
+```css
+.bordes {
+	border: 2px solid red;
+}
+```
+
+Shorthands por posición (lados del borde).
+
+```css
+.bordes-2 {
+	border-top: 2px solid red;
+	border-right: 3px dashed green;
+	border-bottom: 2px solid red;
+	border-left: 3px dashed green;
+}
+```
+
+---
+
+También es posible definir cada lado del borde individualmente (uso menos frecuente)
+
+```css
 /* Lados del borde */
 border-top-width: 5px;
 border-left-color: red;
@@ -209,26 +282,118 @@ border-right-style: solid;
 border-bottom: blue 7px dashed;
 ```
 
-Algunos valores de border-style
+#### Bordes redondeados
 
-- `dotted` - Defines a dotted border
-- `dashed` - Defines a dashed border
-- `solid` - Defines a solid border
-- `double` - Defines a double border
-- `none` - Defines no border
-- `hidden` - Defines a hidden borde
+The `border-radius` property is used
 
-### Color
+```css
+p {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+```
 
-Existen dos formas de establecer colores:
+### ¿Cuanto ocupa un elemento cuando se define margin, padding, border y tamaño?
 
-+ Valor hexadecimal: `color: #RRGGBB` donde los valores de RR, GG, BB está entre 00 y FF.
-+ Valor decimales: `rgb(R, G, B)` donde los valores de R, G y B está entre 0 y 255.
+### Display block e inline
 
-Para añadir transparencia se debe agregar un nuevo valor:
+En html la mayoría de las etiquetas son de dos tipos: `block` o `inline`. Los elementos considerados block ocupan toda el ancho y los elementos inline solo ocupan su contenido, por ejemplo, `div`, `p`, `h1` son elementos block y `span`, `a`, `img` son elemento inline.
+
+```
+|<-------------------- div (block) ------------------>|
+
+|<-span (inline)->|<-span (inline)->|<-span (inline)->|
+```
+
+Con css podemos alterar este comportamiento que viene por defecto, haciendo que un elemento block se convierta en inline y viceversa.
+
+```css
+.enlinea {
+	display: inline;
+}
+
+.bloque {
+    display: block;
+}
+```
+
+## Color
+
+Los colores se pueden asignar a propiedades como: **background** (fondo), **color** (letra), **border** (bordes). Se pueden de definir de varias maneras.
+
+### Nombres de colores
+
+Existen palabras clave como `red`, `yellow`, etc. que permiten asignar colores, estos son nombres de colores predefinidos. 
+
+Según la w3school. actualmente todos los navegadores soporta 140 colores: https://www.w3schools.com/colors/colors_names.asp
+
+```css
+.color {
+	background-color: darkblue; /*fondo*/
+    color: white; 				/*texto*/
+}
+```
+
+> Una página muy útil para encontrar nombres agrupados por colores : https://147colors.com/
+
+### Valores rgb
+
+Se puede definir el color mediante los componentes RGB, siguiendo la siguiente sintaxis: `rgb(R, G, B)`, donde:
+
++ R es el componente Rojo y los valores van del 0 a 255.
++ G es el componente Verde y los valores van de 0 a 255.
+
++ B es el componente Azul y los valores van de 0 a 255
+
+> 0 indica ausencia de color y 255 color al 100%. Blanco es rgb(0, 0, 0) y negro rgb(255, 255, 255) 
+
+```css
+.color-rgb {
+	background-color: rgb(255, 165, 0);
+}
+```
+
+### Valores hexadecimales
+
+Se puede definir colores mediante valores hexadecimales siguiendo la siguiente sintaxis: `#RRGGBB`, donde:
+
++ RR es el componente Rojo y los valores son de 00 a ff.
++ GG es el componente Verde y los valores son de 00 a ff.
+
++ BB es el componente Azul y los valores son de 00 a ff.
+
+> 00 indica ausencia de color y ff color al 100%
+
+```css
+.color-hex {
+	background-color: #ff6347;
+}
+```
+
+> Si los dos valores de cada pareja son iguales se puede abreviar:
+> `#55ff33 = #5f3`
+
+### Colores con transparencia (opacidad)
+
+Para añadir transparencia se debe agregar un nuevo valor (alpha):
 
 - `color: #RRGGBBAA` AA toma valores entre 00 y FF, donde 00 totalmente transparente y FF sin transparencia
-- `color: rgb(R, G, B, A)` A toma valores reales entre 0 y 1, donde 0 inidica totalmente transparente y 1 sin transparencia. 
+- `color: rgb(R, G, B, A)` A toma valores reales entre 0 y 1, donde 0 indica totalmente transparente y 1 sin transparencia. 
+
+## Imágenes
+
+Para las imágenes no se tienen propiedades específicas, pero es recomendable definir el tamaño en el css y no en la etiqueta html.
+
+De preferencia usar valores relativos "%" y no valores absolutos "px", para que las imágenes se puedan acomodar al tamaño de las pantallas.
+
+```css
+img {
+	width: 100%;
+    height: auto;
+}
+```
+
+> **stockSnap.io**  para descargar imágenes sin copyright.
 
 ### Imagen de fondo
 
@@ -236,118 +401,211 @@ Para añadir transparencia se debe agregar un nuevo valor:
 background-image: url('../ruta/de-la/imagen.png');
 ```
 
-> **stockSnap.io**  para descargar imagenes sin copyright
-
-### Display inline y block
-
-```
-display: inline | block;
-```
+> ¿En que ocasiones es mejor usar esto? a comparación de `<img>`
 
 ### Ejercicio 7: Aplicar margenes, paddings, colores, fondo
 
 ## Fuentes y Textos
 
-### Familia de fuentes y tamaños
+### Familia de fuentes o tipografia
+
+Se puede establecer una o varias familias de fuentes, existen familias de fuentes gratuitos y de paga, como: Arial, Times New Roman, Ubuntu, etc.
+
+También existen familias de **fuentes genéricas**:
+
++ `serif`: Con adorno (serifa), sus terminales son pronunciadas.
++ `sans-serif`: Sin adorno (de palo seco)
++ `cursive`: Letras inclinadas
++ `monospace`: Cada caracter ocupa el mismo espacio horizontal (ideal para escribir código)
+
+Para definir una familia de fuente para tu página es:
 
 ```css
-font-family: Arial, sans-serif;
+body {
+	font-family: Arial;
+}
 ```
 
-`Arial` será la fuente principal y `sans-serif` el secundario  en caso que no se encuentre Arial instaladas en las pc.
+### Fuentes alternativas
 
-> Las fuentes genéricas son: serif, sans-serif, monospace, cursive, fantasy.
+En caso de que el usuario no tenga instalado la fuente *Arial* en su máquina, se puede definir **fuentes alternativas**:
 
 ```css
-font-size: 16px;
+body {
+	font-family: Arial, Ubuntu, sans-serif;
+}
 ```
 
-### Grosor y estilos
+> Se recomienda definir como por lo menos una fuente genérica.
+
+### Google Fonts
+
+Muchas veces ocurre que el usuario no tiene instalado las fuentes, en estos casos es mas recomendable usar el servicio de Google Fonts.
+
+Google Fonts provee mas de 1000 fuentes libres para usar en nuestras páginas web.
+
+A continuación detallo los pasos para añadir una fuente:
+
+1. Ir a la pagina de [Google Fonts](https://fonts.google.com/)
+2. Seleccionar la fuente.
+3. Seleccionar el/los weight/s (grosor). (*sug. elegir 3 max.*) 
+4. Click en el ícono "View selected families", copiar el código `<link ... >` y pegar en el *`<head>`* del documento html.
+5. Especificar la familia de fuentes en el css `font-family: 'Montserrat'`
+
+> otro proveedor de servicio de fuente es [Adobe](https://fonts.adobe.com/) (no gratuito)
+
+### Tamaño de fuente
+
+Para definir el tamaño de fuente
 
 ```css
-font-weight: (normal|bold|light) || (100|200|...|900);
-font-style: italic|normal|oblique;
+p {
+	font-size: 16px;
+}
 ```
 
-> 100, 200, ... 900 son utilizados para fuentes externas como Google Fonts.
+> También es posible usar tamaños relativos, (lo veremos en clases)
 
-> italic y oblique algunas fuentes las diferencian. ¿buscar ejemplo?
+### Grosor de fuente
 
-### Suvizado de bordes de texto
+Los grosores de fuentes mas usados son: `light`,`normal`, `bold`
 
-> sugerencia usar solo en títulos (h1) por que el cambio es leve.
-
-```
--webkit-font-smoothing: antialiased;
-text-rendering: optimizelegibility;
-```
-
-### Tranformar textos
-
-```
-text-transform: uppercase|lowercase|capitalize
+```css
+strong {
+	font-weight: bold;
+}
 ```
 
-### Decorar texto
+Para fuentes de Google Fonts lo mas común es usar valores numéricos: 100, 200, ... , 900, donde 100 es el mas delgado  y 900 el mas grueso.
 
-```
-text-decoration: underline|overline|line-through|none
-```
-
-<u>underline</u>, overline (sobre la linea), ~~line-through~~ y none (usado para quitar el subrayado de los links)
-
-### Alinear texto     
-
-```
-text-align: left|center|right
+```css
+.texto-grueso {
+    font-weight: 900;
+}
 ```
 
-### Google fonts
+### Estilos de fuente
 
-1. ir a la pagina de Google Fonts
-2. seleccionar la tipografia.
-3. seleccionar el/los weight/s (sug. elegir 3 max.)
-4. copiar el tag y pegar en el *head* de la pagina web.
+Existen tres estilos que se pueden aplicar: `normal`, `italic` y `oblique`
+
+```css
+.frase {
+	font-style: italic;
+}
+```
+
+> ¿Cual es la diferencia entre oblique e italic?
+
+### Decoración de texto
+
+La propiedad`text-decoration` se usa para añadir una linea horizontal en el texto, sus variantes son: `underline` (línea <u>baja</u>), `overline` (linea encima), `line-through` (linea en ~~medio~~ ) y `none`.
+
+```css
+a {
+	text-decoration: none; 
+}
+```
+
+> El uso más común es quitar el subrayado de los links, valor `none`.
+
+### Alineación de texto
+
+Hay tres posibilidades para alinear texto: `left`, `center` o `right`.
+
+```css
+.texto-centrado {
+	text-align: center;
+}
+```
+
+### Transformación de textos
+
+CSS da la posibilidad de transformar los textos en: `uppercase`, `lowercase` o`capitalize`
+
+```css
+.mayus {
+	text-transform: uppercase;
+}
+```
+
+### Tarea: Descargar fuentes y enlazar al sitio web
 
 ### Ejercicio 8
 
 Modificar el texto del blog
 
+## Iconos
+
+La manera más simple de añadir iconos es con la libreria Font Awesome.
+
+```
+
+```
+
+---
+
 ## Más Estilos
 
 ### Estilo para listas
 
+Con CSS podemos definir el tipo de icono que se mostrará en una lista.
+Dependiendo del tipo de lista se usaran diferentes valores.
+
++ Para `<ol>` son: `lower-roman`, `upper-roman`, `lower-alpha`, `upper-alpha`. `decimal`(default), `decimal-leading-zero` y `lower-greek`.
+
+  ```css
+  ol {
+  	list-style-type: lower-roman;
+  }
+  ```
+
+  > Números romanos (lower-roman, upper-roman), abecedario (lower-alpha, upper-alpha), numeros decimales (decimal) y con leading-zero se añade un 0 por delante (01, 02, etc.), letras griegas (lower-greek)
+
++ Para `<ul>` son:  `circle`, `disc`(default), `square`.
+
+  ```css
+  ul {
+  	list-style-type: square;
+  }
+  ```
+
+**<ul> para el menú de navegación**
+Es común usar `<ul>` para construir el menú de navegación, donde cada `<li>` será un elemento del menú. Si se quiere hacer un menú horizontal será necesario cambiar su comportamiento a `inline-block` porque por defecto es elemento block.
+
+```css
+nav ul li {
+	display: inline-block;
+}
 ```
-ol {
-   list-style-type: lower-roman|upper-roman|lower-alpha|upper-alpha|decimal(default)|decimal-leading-zero|lower-greek; 
-}
 
-ul {
-    list-style-type: circle|disc(default)|square;
-    list-style-position: outside(default)|inside;    
-}
+### Estilos en links
 
-ul {
-	list-style-image: url("ruta/icono.png");    
+Los link presentan varios estados y dependiendo del estado sus estilos pueden cambiar.
+
+Los estados son:
+
+- `a:link` - es el estado normal, el link no fue visitado
+- `a:visited` - el usuario ya visitó el link. 
+- `a:hover` - el mouse esta sobre el link
+- `a:active` - justo cuando el usuario hace click sobre el link.
+
+```css
+a:hover {
+	color: green;
 }
 ```
 
-> Números romanos (lower-roman, upper-roman), abecedario (lower-alpha, upper-alpha), numeros decimales (decimal) y con leading-zero se añade un 0 por delante (01, 02, etc.), letras griegas (lower-greek)
+Ver ejemplo https://www.w3schools.com/css/tryit.asp?filename=trycss_link
+
+Como se dijo anteriormente, es muy usual quitar el subrayado de los links
+
+```css
+a {text-decoration: none;}
+```
 
 ### Estilos en formularios
 
 Dar estilos a un formulario de "Registrarse", con todo lo aprendido hasta ahora.
-
-### Estilos en links
-
-```
-a {text-decoration: none;}
-
-/*Estados de un link*/
-a:visited { ... }
-a:hover { ... }
-a:active { ... } //cuando se hace clic
-```
 
 ### Estilos en tablas
 

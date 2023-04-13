@@ -56,9 +56,11 @@ Hay cuatro **etiquetas clave** en todas las páginas web, estas conforman la **e
 </html>
 ```
 
-### Tag Doctype
+### Etiqueta Doctype
 
-La etiqueta `<!DOCTYPE html>` debe ser el primer elemento del documento HTML.  Está etiqueta indica al navegador que el documento contiene elementos del estándar HTML5.
+La etiqueta `<!DOCTYPE html>` debe ser el primer elemento del documento, es decir, debe estar en la primera línea de cada página HTML.
+
+Está etiqueta indica al navegador que el documento contiene elementos del estándar HTML5.
 
 ### Tag html
 
@@ -68,20 +70,31 @@ El elemento raíz es la etiqueta `<html> ... </html` dentro esta etiqueta van to
 
 Etiqueta `<head> ... </head>` dentro de esta se encuentra la **información relevante para el navegador** (metadatos), como el titulo, descripción, autor, keywords, etc. 
 
-> **_Esta información no se visualizará en el navegador_**
+> Esta información no se visualizará en el navegador
 
-#### Codificación del contenido y links
+#### Etiquetas meta
 
-Con la etiqueta `<meta charset="UTF-8">` indicamos al navegador que tipo de codificación de caracteres que se utilizará. 
+Codificación de caracteres, indicamos al navegador que tipo de codificación de caracteres que se utilizará. 
 
 ```html
 <meta charset="UTF-8">
 ```
 
-Las etiquetas `<link>` son una manera de acceder o declarar contenido externo.
+Tambien se puede añadir alguna descripción:
+
+```html
+<meta name="description" content="Pequeña desc. sobre la pag.">
+<meta name="author" content="Juan Perez">
+<meta name="keyword" content="Palabras clave para ayudar a indexar a los buscadores">
+```
+
+#### Links
+
+Las etiquetas `<link>` nos permiten acceder o declarar contenido externo.
 
 ```html
 <link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="images/icon.png"/>
 ```
 
 ### Tag Body
@@ -156,9 +169,9 @@ Para **visualizar los saltos de linea** usan las etiquetas `<br>` (tag sin cierr
 
 Etiquetas sirven para **remarcar semánticamente** los textos.
 
-*Strong* es para indicar que un texto es importante `<strong>...</strong>`.
+**Strong** es para indicar que un texto es importante `<strong>...</strong>`.
 
-Y *em* para dar énfasis a un texto `<em>...</em>`.
+Y **em** para dar énfasis a un texto `<em>...</em>`.
 
 > No utilizar para colocar en negrita o cursiva, en su lugar se hace con css.
 
@@ -167,12 +180,13 @@ Y *em* para dar énfasis a un texto `<em>...</em>`.
 <p>Esto mi primer párrafo <strong>esto es importante</strong></p>
 ```
 
-### Acrónimos y abreviaturas
+### Abreviaturas
+
+Esta etiqueta define una abreviación o un acrónimo. Esto aporta información util para los navegadores, sistemas de traducción y buscadores.
 
 ```html
 <!-- estructura básica -->
-<!-- Acrónimos -->
-<p>Las <acronym title="Base de Datos">BD</acronym> sirven para almacenar datos relacionados</p>
+<p>Las <abbr title="Base de Datos">BD</abbr> sirven para almacenar datos relacionados</p>
 
 <!-- Abreviaturas -->
 <p>El <abbr title="Ingeniero">Ing.</abbr> Ramirez es experto en Redes</p>
@@ -194,15 +208,17 @@ Y *em* para dar énfasis a un texto `<em>...</em>`.
 
 <!-- direcciones -->
 <address>
-    <p>
-        Carlos Ramos<br>
-        Calle E. Arce<br>
-        Cochabamba, Bolivia
-    </p>
+    Carlos Ramos<br>
+    Calle E. Arce<br>
+    Cochabamba, Bolivia
 </address>
 ```
 
 > A nivel de sintaxis son similares pero a nivel semántico son diferentes.
+
+### Texto preformateado ¿?¿?¿
+
+AGREAGAR ETIQUETAS PRE Y CODE ¿?¿?¿?¿?
 
 ### Ejercicio 2
 
@@ -214,7 +230,11 @@ Crear la siguiente estructura con tags html.
 
 ### Listas ordenadas y desordenas
 
-Las **listas ordenadas** se usan cuanto los elementos tienen un orden. En las **listas desordenas** el orden no importa.
+Utilizamos listas para mostrar una sucesión de elementos que guardan relación entre ellos.
+
+Las **listas ordenadas** se usan cuando los elementos tienen un orden. 
+
+En las **listas desordenas** cuando el orden no importa.
 
 ```html
 <!-- listas ordenadas -->
@@ -253,22 +273,52 @@ Las **listas ordenadas** se usan cuanto los elementos tienen un orden. En las **
 
 ### Enlaces
 
-Los enlaces o links sirven para la **navegación entre páginas internas de un sitio web**, o navegar entre **páginas web** externas.
+Los enlaces o links sirven para la **navegación entre páginas web internas de un sitio web**, o navegar entre **páginas web** externas.
+
+> Aunque es menos frecuente, los enlaces también permiten obtener un archivo de imagen, vídeo, etc.
+
+Sintaxis:
+
+```html
+<a href="direccion/del/recurso">Elemento activador</a>
+```
+
+Donde la direccion del recurso puede ser:
+
++ Ruta absoluta: páginas web externas
+
+  ```
+  http://www.empresa-x/blog/mipagina.html
+  <http|https>://<dominio.web>/<subsección>/<archivo>
+  ```
+
++ Ruta relativa: para páginas web internas
+
+  ```
+  servicios/oferta.html
+  /productos/lista.html (ruta se toma en cuenta desde el dominio)
+  ```
+  
+  
+
+Ejemplos:
 
 ```html
 <!-- Páginas internas -->
 <a href="quienes-somos.html">¿Quienes somos?</a>
 
 <!-- Páginas web externas -->
-<a href="www.google.com">Ir a Google</a>
+<a href="https://www.google.com">Ir a Google</a>
 ```
 
 Abrir el enlace en una nueva pestaña.
 
 ```html
 <!-- Abrir el enlace en una nueva pestaña -->
-<a href="www.google.com" target="_blank">Ir a Google</a>
+<a href="https://www.google.com" target="_blank">Ir a Google</a>
 ```
+
+> `target="_self"` se abre en la misma ventana. Es el valor por defecto.
 
 Navegar entre **zonas de una misma página.**
 
@@ -308,11 +358,11 @@ Breve referencia sobre los atributos de img
 
 Hacer un recetario, crear dos páginas
 
-Página 1 - las imágenes son enlaces, imagen 1 enlace a una página externa, la imagen 2 es un enlace a una página interna.
+**Página 1** - las imágenes son enlaces, imagen 1 enlace a una página externa, la imagen 2 es un enlace a una página interna.
 
 ![Ejercicio 3 - pagina 1](images/ejercicio3a.png)
 
-Página 2 - Reseta
+**Página 2** - Receta
 
 ![Ejercicio 3 - pagina 2](images/ejercicio3b.png)
 
@@ -325,12 +375,12 @@ Las tablas tienen filas y columnas.
 ```html
 <!-- Tabla de 2 x 2 -->
 <table>
-    <tr>
-        <th>cabecera 1</th>
+    <tr> <!-- table row -->
+        <th>cabecera 1</th> <!-- table header -->
         <th>cabecera 2</th>
     </tr>
     <tr>
-        <td>celda 1</td>
+        <td>celda 1</td> <!-- table data -->
         <td>celda 2</td>
     </tr>
     <tr>
@@ -340,7 +390,25 @@ Las tablas tienen filas y columnas.
 </table>
 ```
 
-Combinación de celdas
+> just make sure that the number of cells are the same in each row.
+
+> By default, the text in `<th>` elements are bold and centered, but you can change that with CSS.
+
+> <thead>	Groups the header content in a table
+> <tbody>	Groups the body content in a table
+> <tfoot>	Groups the footer content in a table
+>
+> FALTA EJEMPLO: ¿?¿¿¿??¿?¿¿
+>
+> Deben usarse los tres o ninguno.
+>
+> Una de las ventajas de su uso es, al imprimir una tabla grande que abarca varias páginas, estos elementos pueden permitir que el encabezado y el pie de página de la tabla se impriman en la parte superior e inferior de cada página.
+>
+> Tambien puede usar CSS para diseñar estos elementos
+
+----
+
+**Combinación de celdas**
 
 ```html
 <table>
@@ -369,12 +437,139 @@ Combinación de celdas
 -->
 ```
 
+Ejercicio:
+
+![ejemplo table rowspan y colspan](images/ejercicioTable.png)
+
+---
+
+#### Etiqueta caption
+
+Se usa para agregar un titulo de tabla.
+
+```html
+<table>
+    <caption>Título de la tabla</caption>
+    <tr>
+    	<td>cell 1</td>
+        <td>cell 2</td>
+    </tr>
+</table>
+
+<!-- 
+       Título de la tabla
+|----------|-------------------!
+| dato 1   | dato 2  | dato 3  |
+|----------| --------|---------|
+-->
+```
+
+#### Etiquetas colgroup y col
+
+`<colgroup>`se usa para agrupar a una o mas columnas. 
+
+`<col>` especifica el formato para cada columna y va dentro del *colgroup*.
+
+Estas etiquetas son útiles cuando se quiere dar estilos a una columna en vez de hacerlo para cada celda.
+
+```html
+<table>
+  <colgroup>
+    <col> <!--una columna-->
+    <col span="2" style="background-color:red">
+  </colgroup>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Price</th>
+  </tr>
+</table>
+```
+
+> **Nota:** `<colgroup>` debe ir siempre después de la etiqueta <caption> y antes de  <thead>, <tbody>, <tfoot> y <tr>.
+
+
+
 ### Formularios
 
-Son campos por donde podemos enviar información.
+Son campos por donde podemos enviar información a un servidor para su procesamiento.
+
+La etiqueta `<form>` se usa para crear el formulario y puede contener distintos tipos de elementos input.
 
 ```html
 <form>
+    <!-- varios elementos input -->
+</form>
+```
+
+#### La etiqueta input
+
+Es uno de los más usados, existen distintos tipos.
+
+**Campo de texto**
+
+```html
+<form>
+    <label for="name">Nombre</label>
+    <input type="text" id="name" placeholder="Escribe tu nombre">
+</form>
+```
+
+> The `<label>` element is useful for screen-reader users
+>
+> El atributo for debe ser igual al id del input
+>
+> Si se hace click sobre el texto del label, el curso hace foco en el input.
+
+> El atributo `name` es como un contenedor que almacenará el dato que ingrese el usuario.
+
+**Radio Button**
+
+Se usa para que el usuario selecciones uno de varias opciones.
+
+```html
+<form>
+    <input type="radio" name="ejmrb" id="rb1a" value="op1">
+    <label for="rba">opcion 1</label>
+    <input type="radio" name="ejmrb" id="rb1b" value="op2" checked>
+    <label for="rbb">opcion 2 (checked)</label>
+    <input type="radio" name="ejmrb" id="rb1c" value="op3" disabled>
+    <label for="rbc">opcion 3 (disabled)</label>
+</form>
+```
+
+
+
+**Checkboxes**
+
+Se usa para que el usuario elija cero o varias opciones.
+
+```html
+<form>
+    <input type="checkbox" name="ejemCB[]" id="cba" value="op1" checked>
+    <label for="cba">opcion 1 (checked)</label>
+    <input type="checkbox" name="ejemCB[]" id="cbb" value="op2">
+    <label for="cbb">opcion 2</label>
+</form>
+```
+
+**Submit Button**
+
+Define un boton que sirve para enviar los datos del formulario.
+
+```html
+<form action="register.php">
+  <label for="name">Nombre</label>
+  <input type="text" id="name">
+    
+  <input type="submit" value="Registrarse">
+</form>
+```
+
+
+
+```html
+<form> <!-- Elemento contenedor -->
     <!-- Campos de texto -->
     <fieldset>
     	<legend>Título del fomulario</legend>
@@ -434,6 +629,8 @@ Son campos por donde podemos enviar información.
 </form>
 ```
 
+> **Note:** The form itself is not visible. Also note that the default width of an input field is 20 characters.
+
 ### Ejercicio 4
 
 Reserva de hotel
@@ -477,6 +674,8 @@ otros
 ------- Enlace resaltado enfasis
 -->
 ```
+
+> **Note:** An inline element cannot contain a block-level element!
 
 ### Atributos id y class
 
@@ -577,7 +776,7 @@ Suscríbete ...
 
 ## Etiquetas semánticas
 
-En la especificación de **HTML5** se introdujeron una serie de etiquetas nuevas con cierto sentido semántico (**etiquetas semánticas**), estas etiquetas d**escriben el significado de su contenido**. 
+En la especificación de **HTML5** se introdujeron una serie de etiquetas nuevas con cierto sentido semántico (**etiquetas semánticas**), estas etiquetas **describen el significado de su contenido**. 
 
 Este tipo de etiquetas que componen la web semántica nos sirven para que cualquier mecanismo automático (un navegador, un motor de búsqueda, un lector de *feeds*...) que lea una página web sepa con exactitud la ubicación de las partes que la componen.
 
@@ -789,8 +988,20 @@ https://www.w3schools.com/html/html_symbols.asp
 
 https://www.w3schools.com/html/html_emojis.asp
 
+
+
+## Algunas de las nuevas características de HTML5
+
+- Nuevas etiquetas semánticas para estructurar los documentos HTML, destinadas a remplazar la necesidad de tener una etiqueta `<div>` que identifique cada bloque de la página.
+- Los nuevos elementos multimedia como `<audio>` y `<video>`.
+- La integración de gráficos vectoriales escalables (SVG) en sustitución de los genéricos `<object>`, y un nuevo elemento `<canvas>` que nos permite *dibujar* en él.
+- El cambio, redefinición o estandarización de algunos elementos, como `<a>`, `<cite>` o `<menu>`.
+- `MathML` para fórmulas matemáticas.
+- Almacenamiento local en el lado del cliente.
+- Y otros muchos nuevos APIs 
+
 ## Bibliografía
 
 1. https://html5doctor.com/#glossary descripción de las etiquetas y snippets
 
-2. Curso de html y css 2018 - Udemy
+2. Curso de html y css 2018 - Udemy4

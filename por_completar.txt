@@ -1,0 +1,6 @@
+en los apuntes falta completar:
+* margin
+* padding
+* Calcular el espacio que ocupa un elemento
+* inline y display ¿que propiedades se pueden o no usar?
+
